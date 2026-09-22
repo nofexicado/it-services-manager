@@ -70,3 +70,17 @@ En Power BI Desktop:
 ## Nota sobre los datos de ejemplo
 
 La nómina de técnicos y los usuarios de `src/schema.sql` son datos ficticios de ejemplo, pensados solo para poder probar el sistema end-to-end (login, asignación de tickets, etc.).
+
+## Capturas
+
+**Dashboard (modo oscuro)**
+![Dashboard](screenshots/01-dashboard-dark.png)
+
+**Detalle de ticket: desglose de subtareas por IA y progreso**
+![Detalle de ticket](screenshots/02-ticket-detalle-dark.png)
+
+**Dashboard (modo claro)**
+![Dashboard claro](screenshots/03-dashboard-light.png)
+
+**Login por técnico**
+![Login](screenshots/04-login.png)
