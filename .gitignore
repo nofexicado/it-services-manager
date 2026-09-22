@@ -1,0 +1,10 @@
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.env
+logs/
+*.log
+public/uploads/*
+!public/uploads/.gitkeep
+.DS_Store

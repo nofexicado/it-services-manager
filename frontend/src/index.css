@@ -1,0 +1,343 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ----------------------------------------------------------------
+   Design tokens — SaaS corporativo. Neutros con leve sesgo índigo
+   (elegidos, no heredados). Curvas de easing fuertes tomadas de la
+   skill emil-design-eng (las nativas de CSS son flojas).
+------------------------------------------------------------------ */
+:root {
+  --background: #fbfbfc;
+  --foreground: #0c0c11;
+  --foreground-soft: #52525b;
+  --muted: #f1f1f4;
+  --muted-foreground: #86868f;
+  --card: #ffffff;
+  --card-foreground: #0c0c11;
+  --popover: #ffffff;
+  --popover-foreground: #0c0c11;
+  --border: #e6e6ea;
+  --border-strong: #d7d7de;
+  --input: #dededf;
+  --ring: #574fdb;
+
+  --primary: #574fdb;
+  --primary-hover: #4a43c8;
+  --primary-foreground: #ffffff;
+
+  --subtle: #f6f6f8;
+  --elevated: #ffffff;
+
+  /* estados */
+  --success: #15a34a;
+  --success-bg: #edfaf0;
+  --success-border: #bce6c8;
+  --warning: #b7791f;
+  --warning-bg: #fdf6e7;
+  --warning-border: #ecd8a6;
+  --info: #0b7fc4;
+  --info-bg: #ebf6fd;
+  --info-border: #b3ddf3;
+  --danger: #d4342a;
+  --danger-bg: #fdeeed;
+  --danger-border: #f3c6c2;
+
+  --shadow-xs: 0 1px 2px 0 rgb(15 15 25 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(15 15 25 / 0.06), 0 1px 2px -1px rgb(15 15 25 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(15 15 25 / 0.09), 0 2px 6px -3px rgb(15 15 25 / 0.06);
+  --shadow-lg: 0 12px 32px -10px rgb(15 15 25 / 0.16), 0 4px 12px -4px rgb(15 15 25 / 0.09);
+  --shadow-accent: 0 6px 18px -6px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.dark {
+  --background: #0a0a0c;
+  --foreground: #f4f4f6;
+  --foreground-soft: #b6b6c0;
+  --muted: #1e1e24;
+  --muted-foreground: #80808b;
+  --card: #141418;
+  --card-foreground: #f4f4f6;
+  --popover: #16161b;
+  --popover-foreground: #f4f4f6;
+  --border: #2a2a31;
+  --border-strong: #383840;
+  --input: #33333b;
+  --ring: #7c76f2;
+
+  --primary: #7c76f2;
+  --primary-hover: #8a84f5;
+  --primary-foreground: #0b0b12;
+
+  --subtle: #131317;
+  --elevated: #17171b;
+
+  --success: #4ade80;
+  --success-bg: rgba(21, 163, 74, 0.18);
+  --success-border: rgba(74, 222, 128, 0.3);
+  --warning: #f5c451;
+  --warning-bg: rgba(183, 121, 31, 0.2);
+  --warning-border: rgba(245, 196, 81, 0.3);
+  --info: #4ab6f4;
+  --info-bg: rgba(11, 143, 214, 0.2);
+  --info-border: rgba(74, 182, 244, 0.32);
+  --danger: #f6746b;
+  --danger-bg: rgba(212, 52, 42, 0.2);
+  --danger-border: rgba(246, 116, 107, 0.34);
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.45);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5), 0 2px 6px -3px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 14px 34px -10px rgb(0 0 0 / 0.7), 0 4px 12px -4px rgb(0 0 0 / 0.5);
+  --shadow-accent: 0 8px 22px -8px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-subtle: var(--subtle);
+  --color-elevated: var(--elevated);
+
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-success-border: var(--success-border);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-border: var(--warning-border);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-info-border: var(--info-border);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-border: var(--danger-border);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-accent: var(--shadow-accent);
+
+  /* curvas fuertes — se exponen como utilidades ease-snap / ease-fluid / ease-drawer
+     y también como var(--ease-*) para usar en @layer y keyframes */
+  --ease-snap: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-fluid: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-display: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 24%, transparent);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer utilities {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* entrada estándar — nunca desde scale(0) */
+  .animate-in {
+    animation: enter 0.18s var(--ease-snap) both;
+  }
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.97);
+    }
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* morphing button — swap de label con blur, check dibujado */
+  .label-morph {
+    animation: label-morph 0.2s var(--ease-snap);
+  }
+  @keyframes label-morph {
+    from {
+      opacity: 0;
+      filter: blur(3px);
+    }
+  }
+  .check-draw {
+    stroke-dasharray: 26;
+    stroke-dashoffset: 26;
+    animation: check-draw 0.4s var(--ease-snap) 0.05s forwards;
+  }
+  @keyframes check-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* header — entrada suave (una vez por carga de página) */
+  .hdr-l {
+    animation: hdr-l 0.32s var(--ease-snap) both;
+  }
+  .hdr-r {
+    animation: hdr-r 0.32s var(--ease-snap) both;
+    animation-delay: 0.04s;
+  }
+  @keyframes hdr-l {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+  }
+  @keyframes hdr-r {
+    from {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+  }
+
+  /* wordmark ITSM */
+  .text-gradient-brand {
+    background: linear-gradient(
+      100deg,
+      var(--foreground) 0%,
+      color-mix(in srgb, var(--primary) 80%, var(--foreground)) 55%,
+      var(--primary) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .animate-rise {
+    animation: rise 0.3s var(--ease-snap) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  /* popover origin-aware (Radix Select / dropdowns) */
+  .animate-selectin {
+    animation: selectin 0.15s var(--ease-snap);
+  }
+  @keyframes selectin {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  /* Radix Accordion (subtareas colapsables) */
+  .accordion-content[data-state='open'] {
+    animation: acc-down 0.2s var(--ease-snap);
+  }
+  .accordion-content[data-state='closed'] {
+    animation: acc-up 0.18s var(--ease-snap);
+  }
+  @keyframes acc-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+  @keyframes acc-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  /* Logo: texto blanco -> contorno negro faux (drop-shadows apiladas) para
+     que se lea sobre fondo claro. En oscuro el contorno no se nota: lo apagamos. */
+  .logo-contrast {
+    filter: drop-shadow(1px 0 0 rgba(0, 0, 0, 0.9)) drop-shadow(-1px 0 0 rgba(0, 0, 0, 0.9))
+      drop-shadow(0 1px 0 rgba(0, 0, 0, 0.9)) drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.9))
+      drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.75)) drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.75))
+      drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.75)) drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.75));
+  }
+  .dark .logo-contrast {
+    filter: none;
+  }
+}
+
+/* En touch el :hover se dispara al tocar — anulamos solo el movimiento. */
+@media (hover: none) {
+  [data-lift]:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
